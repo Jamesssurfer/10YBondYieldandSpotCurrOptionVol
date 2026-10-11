@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T15:23:09Z",
+  "generated_at": "2026-10-11T15:29:19Z",
   "as_of_date": "2026-10-09",
   "yields": {
     "snapshot_pct": {
@@ -1296,7 +1296,6 @@
         "carry_vol_1m": 0.7156,
         "carry_vol_3m": 0.7091,
         "slope_1m_3m": 0.0006,
-        "slope_3m_6m": 0.0035,
         "chg_3d_1m": -0.0022,
         "chg_3d_1w": -0.0003,
         "spot": 0.8299,
@@ -1318,7 +1317,6 @@
         "carry_vol_1m": 0.302,
         "carry_vol_3m": 0.3075,
         "slope_1m_3m": -0.0008,
-        "slope_3m_6m": 0.0023,
         "chg_3d_1m": 0.0022,
         "chg_3d_1w": 0.0074,
         "spot": 1.4253,
@@ -1340,7 +1338,6 @@
         "carry_vol_1m": 0.2934,
         "carry_vol_3m": 0.284,
         "slope_1m_3m": 0.0025,
-        "slope_3m_6m": 0.0036,
         "chg_3d_1m": -0.0065,
         "chg_3d_1w": -0.0016,
         "spot": 158.272,
@@ -1362,7 +1359,6 @@
         "carry_vol_1m": 0.0301,
         "carry_vol_3m": 0.03,
         "slope_1m_3m": 0.0002,
-        "slope_3m_6m": 0.0057,
         "chg_3d_1m": 0.0013,
         "chg_3d_1w": 0.0056,
         "spot": 1.3228,
@@ -1384,7 +1380,6 @@
         "carry_vol_1m": 0.017,
         "carry_vol_3m": 0.0166,
         "slope_1m_3m": 0.0019,
-        "slope_3m_6m": 0.0065,
         "chg_3d_1m": -0.0017,
         "chg_3d_1w": 0.0054,
         "spot": 0.6979,
@@ -1406,7 +1401,6 @@
         "carry_vol_1m": -0.0201,
         "carry_vol_3m": -0.0205,
         "slope_1m_3m": -0.0017,
-        "slope_3m_6m": 0.0045,
         "chg_3d_1m": -0.0015,
         "chg_3d_1w": 0.0002,
         "spot": 0.5606,
@@ -1428,7 +1422,6 @@
         "carry_vol_1m": -0.2743,
         "carry_vol_3m": -0.2791,
         "slope_1m_3m": -0.0011,
-        "slope_3m_6m": 0.0028,
         "chg_3d_1m": 0.003,
         "chg_3d_1w": 0.0072,
         "spot": 1.1197,
@@ -1511,14 +1504,21 @@
   "risk_sentiment": {
     "us_10y": 5.24,
     "germany_10y": 3.47,
-    "italy_germany_spread_bp": 111,
-    "swiss_yield": 0.56,
+    "swiss_10y": 0.56,
+    "italy_germany_bp": 111,
+    "spain_germany_bp": 64,
     "gold_price": 4194.07,
     "gold_1m_vol": 0.2031,
+    "gold_3d_vol_chg": 0.0009,
+    "usdchf_spot": 0.8299,
+    "usdchf_1m_vol": 0.0654,
+    "eurusd_1m_vol": 0.0646,
     "risk_tone": "Risk-Off leaning",
     "notes": [
-      "Elevated Italy-Germany spread or high Gold vol → risk-off bias",
-      "Very low Swiss yields remain a classic safe-haven signal"
+      "Rising Italy/Spain–Germany spreads + rising EURUSD vol → peripheral stress",
+      "Very low Swiss yields + firm USDCHF → classic safe-haven demand",
+      "Gold rising while US yields rise → stronger risk-off / inflation hedge bid",
+      "Gold falling while US yields rise → normal rates dominance"
     ]
   },
   "gold": {
