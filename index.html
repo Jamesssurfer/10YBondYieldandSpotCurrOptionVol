@@ -3,486 +3,400 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>10Y Bond Yield + FX Options Dashboard</title>
+  <title>10Y Bond + FX Options Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: #0a0a0b;
-      color: #e4e4e7;
-    }
-    
-    .container-main {
-      width: 1560px;
-      max-width: 100%;
-      margin: 0 auto;
-    }
-    
-    .card {
-      background: #18181b;
-      border: 1px solid #27272a;
-      border-radius: 12px;
-      transition: all 0.2s ease;
-    }
-    .card:hover {
-      border-color: #3f3f46;
-    }
-    
-    .badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 9999px;
-    }
-    .badge-mid { background: #422006; color: #fbbf24; }
-    .badge-high { background: #450a0a; color: #f87171; }
-    .badge-low  { background: #052e16; color: #4ade80; }
-    
-    .tab-btn {
-      padding: 8px 18px;
-      border-radius: 9999px;
-      font-size: 13px;
-      font-weight: 500;
-      transition: all 0.15s;
-      border: 1px solid transparent;
-    }
-    .tab-btn.active {
-      background: #22c55e;
-      color: #052e16;
-    }
-    .tab-btn:not(.active) {
-      background: #27272a;
-      color: #a1a1aa;
-    }
-    .tab-btn:not(.active):hover {
-      background: #3f3f46;
-      color: #e4e4e7;
-    }
-    
-    .progress-track {
-      height: 6px;
-      background: #27272a;
-      border-radius: 9999px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      border-radius: 9999px;
-      background: linear-gradient(90deg, #f59e0b, #fbbf24);
-    }
-    
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0a0a0b; color: #e4e4e7; }
+    .container-main { width: 1560px; max-width: 100%; margin: 0 auto; }
+    .card { background: #18181b; border: 1px solid #27272a; border-radius: 12px; }
+    .card:hover { border-color: #3f3f46; }
+    .badge { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 9999px; }
+    .badge-attractive { background: #052e16; color: #4ade80; }
+    .badge-neutral   { background: #422006; color: #fbbf24; }
+    .badge-avoid     { background: #450a0a; color: #f87171; }
+    .badge-spike     { background: #3b0764; color: #c084fc; }
+    .badge-crush     { background: #164e63; color: #22d3ee; }
+    .badge-expand    { background: #7c2d12; color: #fb923c; }
+    .badge-steep     { background: #1e3a8a; color: #93c5fd; }
+    .badge-inverted  { background: #4a044e; color: #e879f9; }
+    .tab-btn { padding: 8px 18px; border-radius: 9999px; font-size: 13px; font-weight: 500; transition: all 0.15s; }
+    .tab-btn.active { background: #22c55e; color: #052e16; }
+    .tab-btn:not(.active) { background: #27272a; color: #a1a1aa; }
+    .tab-btn:not(.active):hover { background: #3f3f46; color: #e4e4e7; }
     .positive { color: #4ade80; }
     .negative { color: #f87171; }
-    
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th {
-      text-align: left;
-      font-size: 11px;
-      font-weight: 600;
-      color: #71717a;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 10px 12px;
-      border-bottom: 1px solid #27272a;
-    }
-    td {
-      padding: 11px 12px;
-      font-size: 13px;
-      border-bottom: 1px solid #1f1f23;
-    }
-    tr:hover td {
-      background: #1f1f23;
-    }
-    
-    .section-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: #fafafa;
-      margin-bottom: 16px;
-    }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.04em; padding: 10px 12px; border-bottom: 1px solid #27272a; }
+    td { padding: 11px 12px; font-size: 13px; border-bottom: 1px solid #1f1f23; }
+    tr:hover td { background: #1f1f23; }
+    .section-title { font-size: 15px; font-weight: 600; color: #fafafa; margin-bottom: 14px; }
+    .progress-track { height: 5px; background: #27272a; border-radius: 9999px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 9999px; background: linear-gradient(90deg, #f59e0b, #fbbf24); }
   </style>
 </head>
 <body class="min-h-screen">
   <div class="container-main px-6 py-6">
 
     <!-- Header -->
-    <div class="flex items-center justify-between mb-8">
+    <div class="flex items-center justify-between mb-7">
       <div>
         <h1 class="text-2xl font-bold tracking-tight text-white">10Y BOND + FX OPTIONS DASHBOARD</h1>
-        <p class="text-sm text-zinc-500 mt-1" id="header-meta">Loading...</p>
+        <p class="text-sm text-zinc-500 mt-1" id="header-meta">Loading data...</p>
       </div>
-      <div class="flex items-center gap-3">
-        <button onclick="loadData()" class="tab-btn active text-xs">↻ Refresh</button>
-      </div>
+      <button onclick="loadData()" class="tab-btn active text-xs">↻ Refresh</button>
     </div>
 
-    <!-- Navigation Tabs -->
+    <!-- Navigation -->
     <div class="flex gap-2 mb-8 flex-wrap" id="nav-tabs">
       <button class="tab-btn active" data-tab="overview">Overview</button>
-      <button class="tab-btn" data-tab="yields">Yields & Spreads</button>
-      <button class="tab-btn" data-tab="carry">Carry Ranking</button>
-      <button class="tab-btn" data-tab="vols">FX Vol Surfaces</button>
-      <button class="tab-btn" data-tab="gold">Gold</button>
+      <button class="tab-btn" data-tab="carry">Carry & Differentials</button>
+      <button class="tab-btn" data-tab="vols">Vol Surfaces</button>
+      <button class="tab-btn" data-tab="linkage">Rates ↔ FX</button>
+      <button class="tab-btn" data-tab="sentiment">Risk Sentiment</button>
+      <button class="tab-btn" data-tab="signals">Signals</button>
     </div>
 
-    <!-- ==================== OVERVIEW ==================== -->
+    <!-- ===================== OVERVIEW ===================== -->
     <div id="tab-overview" class="tab-content">
-      <h2 class="section-title">Market Overview — Key Metrics</h2>
-      
-      <!-- Top cards: Latest Yields -->
-      <div class="grid grid-cols-4 gap-4 mb-8" id="yield-cards"></div>
+      <div class="grid grid-cols-3 gap-5 mb-8">
+        <div class="card p-5" id="sentiment-card"></div>
+        <div class="card p-5 col-span-2">
+          <div class="section-title">Active Alerts</div>
+          <div id="overview-alerts" class="space-y-2 text-sm"></div>
+        </div>
+      </div>
 
-      <!-- Carry Ranking preview -->
-      <h2 class="section-title mt-10">Top Carry / Vol Ranking</h2>
+      <h2 class="section-title">Top Carry Opportunities</h2>
       <div class="grid grid-cols-4 gap-4 mb-8" id="carry-preview"></div>
 
-      <!-- Key Spreads -->
-      <h2 class="section-title mt-10">Key 10Y Spreads (bp)</h2>
+      <h2 class="section-title">Key 10Y Spreads (bp)</h2>
       <div class="card p-5">
         <div class="grid grid-cols-5 gap-4" id="spread-cards"></div>
       </div>
     </div>
 
-    <!-- ==================== YIELDS & SPREADS ==================== -->
-    <div id="tab-yields" class="tab-content hidden">
-      <h2 class="section-title">10-Year Government Bond Yields</h2>
-      
-      <div class="card p-5 mb-8 overflow-x-auto">
-        <table id="yield-table">
+    <!-- ===================== CARRY ===================== -->
+    <div id="tab-carry" class="tab-content hidden">
+      <h2 class="section-title">Interest Rate Differential & Risk-Adjusted Carry</h2>
+      <p class="text-sm text-zinc-500 mb-5">Sorted by Carry / 1M Vol. Positive = attractive from a USD-funding perspective.</p>
+      <div class="grid grid-cols-3 gap-5" id="carry-full"></div>
+    </div>
+
+    <!-- ===================== VOL SURFACES ===================== -->
+    <div id="tab-vols" class="tab-content hidden">
+      <h2 class="section-title">FX Volatility Surfaces & Term Structure</h2>
+      <div class="grid grid-cols-2 gap-5" id="vol-surfaces"></div>
+    </div>
+
+    <!-- ===================== RATES ↔ FX ===================== -->
+    <div id="tab-linkage" class="tab-content hidden">
+      <h2 class="section-title">Rates ↔ FX Linkage</h2>
+      <div class="card p-5 mb-6">
+        <p class="text-sm text-zinc-400 mb-4">How current yield differentials relate to spot levels and recent vol behaviour.</p>
+        <div id="linkage-content"></div>
+      </div>
+      <div class="card p-5 overflow-x-auto">
+        <table id="linkage-table">
           <thead>
             <tr>
-              <th>Country</th>
-              <th>Yield (%)</th>
-              <th>vs US (bp)</th>
+              <th>Pair</th>
+              <th>Yield Diff (bp)</th>
+              <th>Spot</th>
+              <th>1M Vol</th>
+              <th>3D Vol Chg</th>
+              <th>Carry Signal</th>
             </tr>
           </thead>
           <tbody></tbody>
         </table>
       </div>
+    </div>
 
-      <h2 class="section-title">Key Spreads History (latest first)</h2>
-      <div class="card p-5 overflow-x-auto">
-        <table id="spread-table">
-          <thead></thead>
-          <tbody></tbody>
-        </table>
+    <!-- ===================== RISK SENTIMENT ===================== -->
+    <div id="tab-sentiment" class="tab-content hidden">
+      <h2 class="section-title">Cross-Asset Risk Sentiment Snapshot</h2>
+      <div class="grid grid-cols-4 gap-5 mb-8" id="sentiment-metrics"></div>
+      <div class="card p-5">
+        <div class="section-title">Interpretation</div>
+        <ul class="text-sm text-zinc-400 space-y-2" id="sentiment-notes"></ul>
       </div>
     </div>
 
-    <!-- ==================== CARRY ==================== -->
-    <div id="tab-carry" class="tab-content hidden">
-      <h2 class="section-title">Risk-Adjusted Carry Ranking (Yield Diff ÷ 1M Vol)</h2>
-      <p class="text-sm text-zinc-500 mb-6">Higher = more attractive carry per unit of implied volatility</p>
-      
-      <div class="grid grid-cols-3 gap-5" id="carry-full"></div>
-    </div>
-
-    <!-- ==================== FX VOLS ==================== -->
-    <div id="tab-vols" class="tab-content hidden">
-      <h2 class="section-title">FX Options Implied Volatility Surfaces</h2>
-      
-      <div class="grid grid-cols-2 gap-5" id="vol-surfaces"></div>
-    </div>
-
-    <!-- ==================== GOLD ==================== -->
-    <div id="tab-gold" class="tab-content hidden">
-      <h2 class="section-title">Gold — Price & Volatility</h2>
-      <div id="gold-content" class="grid grid-cols-2 gap-6"></div>
+    <!-- ===================== SIGNALS ===================== -->
+    <div id="tab-signals" class="tab-content hidden">
+      <h2 class="section-title">Practical Trading & Interpretive Signals</h2>
+      <p class="text-sm text-zinc-500 mb-5">Auto-generated flags based on current levels and 3-day changes.</p>
+      <div class="grid grid-cols-2 gap-5" id="signals-grid"></div>
     </div>
 
   </div>
 
   <script>
     // ============================================================
-    // CONFIG — change only if your repo / path is different
+    // CONFIG — CHANGE THIS LINE ONLY
     // ============================================================
     const DATA_URL = "https://raw.githubusercontent.com/Jamesssurfer/10YBondYieldandSpotCurrOptionVol/main/data/bond_fx_data.json";
-    // ↑ Replace YOUR_USERNAME with your actual GitHub username
 
     let data = null;
+    const chartInstances = {};
 
-    // ============================================================
-    // LOAD DATA
-    // ============================================================
     async function loadData() {
       try {
         const res = await fetch(DATA_URL + "?t=" + Date.now());
-        if (!res.ok) throw new Error("Failed to fetch data");
+        if (!res.ok) throw new Error("Fetch failed");
         data = await res.json();
         renderAll();
       } catch (e) {
-        document.getElementById("header-meta").textContent = "Error loading data — check GitHub path or run the Apps Script update";
+        document.getElementById("header-meta").textContent = "Error loading data. Run the Apps Script update first.";
         console.error(e);
       }
     }
 
-    // ============================================================
-    // RENDERERS
-    // ============================================================
     function renderAll() {
       if (!data) return;
-
-      // Header
       document.getElementById("header-meta").innerHTML =
-        `Data as of <span class="text-emerald-400">${data.as_of_date}</span> · Updated ${data.generated_at?.slice(0,19).replace("T"," ")} UTC`;
+        `Data as of <span class="text-emerald-400">${data.as_of_date}</span> · Generated ${data.generated_at?.slice(0,19).replace("T"," ")} UTC`;
 
-      renderYieldCards();
-      renderCarryPreview();
-      renderSpreadCards();
-      renderYieldTable();
-      renderSpreadTable();
+      renderOverview();
       renderCarryFull();
       renderVolSurfaces();
-      renderGold();
+      renderLinkage();
+      renderSentiment();
+      renderSignals();
     }
 
-    // ----- Overview: Yield cards -----
-    function renderYieldCards() {
-      const snap = data.yields?.snapshot_pct || {};
-      const keyCountries = ["United States", "Germany", "Japan", "Australia", "Britain", "Italy", "Canada", "Switzerland"];
-      
-      const html = keyCountries.map(c => {
-        const val = snap[c];
-        return `
-          <div class="card p-4">
-            <div class="flex justify-between items-start mb-3">
-              <span class="text-sm font-medium text-zinc-300">${c}</span>
-            </div>
-            <div class="text-2xl font-semibold text-white">${val != null ? val.toFixed(2) + "%" : "—"}</div>
-          </div>`;
+    // ---------- OVERVIEW ----------
+    function renderOverview() {
+      const s = data.risk_sentiment || {};
+      document.getElementById("sentiment-card").innerHTML = `
+        <div class="text-xs text-zinc-500 mb-1">Risk Tone</div>
+        <div class="text-xl font-semibold mb-3 ${s.risk_tone?.includes("Off") ? "text-red-400" : "text-emerald-400"}">${s.risk_tone || "—"}</div>
+        <div class="text-sm text-zinc-400 space-y-1">
+          <div>US 10Y: <span class="text-white">${s.us_10y ?? "—"}%</span></div>
+          <div>IT-DE Spread: <span class="text-white">${s.italy_germany_spread_bp ?? "—"} bp</span></div>
+          <div>Gold 1M Vol: <span class="text-white">${s.gold_1m_vol ? (s.gold_1m_vol*100).toFixed(1)+"%" : "—"}</span></div>
+        </div>`;
+
+      // Alerts
+      const alerts = [];
+      (data.carry?.signals || []).forEach(sig => {
+        if (sig.vol_spike) alerts.push(`<div class="flex items-center gap-2"><span class="badge badge-spike">Vol Spike</span> ${sig.pair} — short-dated vol elevated</div>`);
+        if (sig.vol_crush) alerts.push(`<div class="flex items-center gap-2"><span class="badge badge-crush">Crush</span> ${sig.pair} — 3-day vol declining</div>`);
+        if (sig.vol_expansion) alerts.push(`<div class="flex items-center gap-2"><span class="badge badge-expand">Expansion</span> ${sig.pair} — 3-day vol rising</div>`);
+        if (sig.carry === "Attractive") alerts.push(`<div class="flex items-center gap-2"><span class="badge badge-attractive">Attractive Carry</span> ${sig.pair}</div>`);
+        if (sig.term_structure === "Inverted") alerts.push(`<div class="flex items-center gap-2"><span class="badge badge-inverted">Inverted</span> ${sig.pair} term structure</div>`);
+      });
+      document.getElementById("overview-alerts").innerHTML = alerts.length ? alerts.join("") : "<div class='text-zinc-500'>No major alerts</div>";
+
+      // Carry preview
+      const top = (data.carry?.ranking || []).slice(0, 4);
+      document.getElementById("carry-preview").innerHTML = top.map(r => {
+        const sig = r.signals?.carry || "Neutral";
+        const badge = sig === "Attractive" ? "badge-attractive" : sig === "Avoid / Expensive" ? "badge-avoid" : "badge-neutral";
+        return `<div class="card p-4">
+          <div class="flex justify-between mb-2"><span class="font-medium">${r.pair}</span><span class="badge ${badge}">${sig}</span></div>
+          <div class="text-xl font-semibold">${r.carry_vol_1m?.toFixed(3) ?? "—"}</div>
+          <div class="text-xs text-zinc-500 mt-1">${r.yield_diff_bp} bp · 1M ${(r.vol_1m*100).toFixed(1)}%</div>
+        </div>`;
       }).join("");
-      document.getElementById("yield-cards").innerHTML = html;
-    }
 
-    // ----- Overview: Carry preview (top 4) -----
-    function renderCarryPreview() {
-      const ranking = (data.carry?.ranking || []).slice(0, 4);
-      const html = ranking.map((r, i) => {
-        const ratio = r.carry_vol_1m;
-        const badge = ratio > 0.03 ? "badge-low" : ratio > 0.01 ? "badge-mid" : "badge-high";
-        const label = ratio > 0.03 ? "Attractive" : ratio > 0.01 ? "Neutral" : "Expensive";
-        return `
-          <div class="card p-4">
-            <div class="flex justify-between items-start mb-2">
-              <span class="text-sm font-medium">${r.pair}</span>
-              <span class="badge ${badge}">${label}</span>
-            </div>
-            <div class="text-xl font-semibold mb-1">${ratio != null ? ratio.toFixed(3) : "—"}</div>
-            <div class="text-xs text-zinc-500">
-              Diff ${(r.yield_diff_bp || 0)} bp · 1M Vol ${r.vol_1m ? (r.vol_1m * 100).toFixed(1) + "%" : "—"}
-            </div>
-          </div>`;
-      }).join("");
-      document.getElementById("carry-preview").innerHTML = html || "<p class='text-zinc-500'>No carry data</p>";
-    }
-
-    // ----- Overview: Spread cards -----
-    function renderSpreadCards() {
+      // Spreads
       const spreads = data.yields?.key_spreads_latest || {};
       const keys = Object.keys(spreads).filter(k => k !== "date");
-      const html = keys.map(k => {
+      document.getElementById("spread-cards").innerHTML = keys.map(k => {
         const bp = spreads[k] != null ? Math.round(spreads[k] * 10000) : null;
         const cls = bp > 0 ? "positive" : bp < 0 ? "negative" : "";
-        return `
-          <div class="text-center">
-            <div class="text-xs text-zinc-500 mb-1">${k}</div>
-            <div class="text-lg font-semibold ${cls}">${bp != null ? (bp > 0 ? "+" : "") + bp : "—"}</div>
-          </div>`;
+        return `<div class="text-center"><div class="text-xs text-zinc-500 mb-1">${k}</div>
+          <div class="text-lg font-semibold ${cls}">${bp != null ? (bp>0?"+":"")+bp : "—"}</div></div>`;
       }).join("");
-      document.getElementById("spread-cards").innerHTML = html;
     }
 
-    // ----- Yields table -----
-    function renderYieldTable() {
-      const snap = data.yields?.snapshot_pct || {};
-      const us = snap["United States"];
-      const tbody = document.querySelector("#yield-table tbody");
-      
-      const rows = Object.entries(snap)
-        .filter(([k]) => k !== "date")
-        .sort((a, b) => (b[1] || 0) - (a[1] || 0))
-        .map(([country, yld]) => {
-          const vsUs = (us != null && yld != null) ? Math.round((yld - us) * 100) : null;
-          const cls = vsUs > 0 ? "positive" : vsUs < 0 ? "negative" : "";
-          return `<tr>
-            <td class="font-medium">${country}</td>
-            <td>${yld != null ? yld.toFixed(2) : "—"}</td>
-            <td class="${cls}">${vsUs != null ? (vsUs > 0 ? "+" : "") + vsUs : "—"}</td>
-          </tr>`;
-        }).join("");
-      tbody.innerHTML = rows;
+    // ---------- CARRY FULL ----------
+    function renderCarryFull() {
+      const ranking = data.carry?.ranking || [];
+      document.getElementById("carry-full").innerHTML = ranking.map(r => {
+        const sig = r.signals || {};
+        const badge = sig.carry === "Attractive" ? "badge-attractive" : sig.carry === "Avoid / Expensive" ? "badge-avoid" : "badge-neutral";
+        const pct = Math.min(100, Math.max(0, (r.carry_vol_1m || 0) * 900));
+        return `<div class="card p-5">
+          <div class="flex justify-between items-start mb-3">
+            <div><div class="text-base font-semibold">${r.pair}</div>
+            <div class="text-xs text-zinc-500">Spot ${r.spot?.toFixed(4) ?? "—"}</div></div>
+            <span class="badge ${badge}">${sig.carry || "Neutral"}</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-sm mb-3">
+            <div><div class="text-zinc-500 text-xs">Yield Diff</div><div class="font-medium">${r.yield_diff_bp} bp</div></div>
+            <div><div class="text-zinc-500 text-xs">Carry / 1M</div><div class="font-medium text-emerald-400">${r.carry_vol_1m?.toFixed(3) ?? "—"}</div></div>
+            <div><div class="text-zinc-500 text-xs">1M Vol</div><div class="font-medium">${r.vol_1m ? (r.vol_1m*100).toFixed(1)+"%" : "—"}</div></div>
+            <div><div class="text-zinc-500 text-xs">3D Vol Chg</div>
+              <div class="font-medium ${r.chg_3d_1m > 0 ? "positive" : r.chg_3d_1m < 0 ? "negative" : ""}">
+                ${r.chg_3d_1m != null ? (r.chg_3d_1m>0?"+":"")+(r.chg_3d_1m*100).toFixed(1)+"%" : "—"}
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            ${sig.vol_spike ? '<span class="badge badge-spike">Vol Spike</span>' : ''}
+            ${sig.vol_crush ? '<span class="badge badge-crush">Crush</span>' : ''}
+            ${sig.vol_expansion ? '<span class="badge badge-expand">Expansion</span>' : ''}
+            ${sig.term_structure === "Steep" ? '<span class="badge badge-steep">Steep</span>' : ''}
+            ${sig.term_structure === "Inverted" ? '<span class="badge badge-inverted">Inverted</span>' : ''}
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+        </div>`;
+      }).join("") || "<p class='text-zinc-500'>No data</p>";
     }
 
-    // ----- Spreads history table -----
-    function renderSpreadTable() {
-      const hist = (data.yields?.key_spreads_history || []).slice().reverse().slice(0, 12);
-      if (!hist.length) return;
+    // ---------- VOL SURFACES ----------
+    function renderVolSurfaces() {
+      const surfaces = data.fx_vols?.surfaces || {};
+      const container = document.getElementById("vol-surfaces");
+      container.innerHTML = "";
 
-      const keys = Object.keys(hist[0]).filter(k => k !== "date");
-      const thead = document.querySelector("#spread-table thead");
-      thead.innerHTML = `<tr><th>Date</th>${keys.map(k => `<th>${k}</th>`).join("")}</tr>`;
+      Object.entries(surfaces).forEach(([pair, s], idx) => {
+        const ts = s.term_structure || {};
+        const chg3 = s.change_3d || {};
+        const id = `chart-${pair}`;
 
-      const tbody = document.querySelector("#spread-table tbody");
-      tbody.innerHTML = hist.map(row => {
+        const card = document.createElement("div");
+        card.className = "card p-5";
+        card.innerHTML = `
+          <div class="flex justify-between items-center mb-3">
+            <div>
+              <div class="text-base font-semibold">${pair}</div>
+              <div class="text-xs text-zinc-500">Spot ${s.spot?.toFixed(4) ?? "—"} · ${s.as_of}</div>
+            </div>
+            <div class="flex gap-1">
+              ${chg3["1M"] < -0.008 ? '<span class="badge badge-crush">3D Crush</span>' : ''}
+              ${chg3["1M"] > 0.008 ? '<span class="badge badge-expand">3D Expansion</span>' : ''}
+            </div>
+          </div>
+          <canvas id="${id}" height="180"></canvas>
+          <div class="grid grid-cols-5 gap-2 mt-3 text-center text-xs">
+            ${["ON","1W","1M","3M","6M"].map(t => `
+              <div>
+                <div class="text-zinc-500">${t}</div>
+                <div class="font-medium">${ts[t] != null ? (ts[t]*100).toFixed(1) : "—"}</div>
+                <div class="${chg3[t]>0?"positive":chg3[t]<0?"negative":"text-zinc-600"}">
+                  ${chg3[t]!=null ? (chg3[t]>0?"+":"")+(chg3[t]*100).toFixed(1) : ""}
+                </div>
+              </div>`).join("")}
+          </div>`;
+        container.appendChild(card);
+
+        // Chart
+        const ctx = document.getElementById(id).getContext("2d");
+        if (chartInstances[id]) chartInstances[id].destroy();
+        chartInstances[id] = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: ["O/N", "1W", "1M", "3M", "6M"],
+            datasets: [{
+              data: [ts.ON, ts["1W"], ts["1M"], ts["3M"], ts["6M"]].map(v => v != null ? v*100 : null),
+              borderColor: "#f59e0b",
+              backgroundColor: "rgba(245,158,11,0.08)",
+              fill: true,
+              tension: 0.3,
+              pointRadius: 4,
+              pointBackgroundColor: "#f59e0b"
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { grid: { color: "#27272a" }, ticks: { color: "#71717a", callback: v => v+"%" } },
+              x: { grid: { display: false }, ticks: { color: "#a1a1aa" } }
+            }
+          }
+        });
+      });
+    }
+
+    // ---------- RATES ↔ FX ----------
+    function renderLinkage() {
+      const ranking = data.carry?.ranking || [];
+      document.getElementById("linkage-content").innerHTML = `
+        <div class="text-sm text-zinc-400 space-y-2">
+          <p>• Pairs with large positive yield differential and low vol currently offer the best risk-adjusted carry.</p>
+          <p>• Watch for divergence: if the differential moves sharply but the spot / vol does not react, a catch-up move is more likely.</p>
+          <p>• Short-dated vol spikes often precede or coincide with rate-driven FX moves.</p>
+        </div>`;
+
+      const tbody = document.querySelector("#linkage-table tbody");
+      tbody.innerHTML = ranking.map(r => {
+        const sig = r.signals?.carry || "Neutral";
+        const badge = sig === "Attractive" ? "badge-attractive" : sig === "Avoid / Expensive" ? "badge-avoid" : "badge-neutral";
         return `<tr>
-          <td class="text-zinc-400">${row.date}</td>
-          ${keys.map(k => {
-            const bp = row[k] != null ? Math.round(row[k] * 10000) : null;
-            const cls = bp > 0 ? "positive" : bp < 0 ? "negative" : "";
-            return `<td class="${cls}">${bp != null ? bp : "—"}</td>`;
-          }).join("")}
+          <td class="font-medium">${r.pair}</td>
+          <td>${r.yield_diff_bp ?? "—"}</td>
+          <td>${r.spot?.toFixed(4) ?? "—"}</td>
+          <td>${r.vol_1m ? (r.vol_1m*100).toFixed(1)+"%" : "—"}</td>
+          <td class="${r.chg_3d_1m>0?"positive":r.chg_3d_1m<0?"negative":""}">
+            ${r.chg_3d_1m!=null ? (r.chg_3d_1m>0?"+":"")+(r.chg_3d_1m*100).toFixed(1)+"%" : "—"}
+          </td>
+          <td><span class="badge ${badge}">${sig}</span></td>
         </tr>`;
       }).join("");
     }
 
-    // ----- Full Carry Ranking -----
-    function renderCarryFull() {
-      const ranking = data.carry?.ranking || [];
-      const html = ranking.map(r => {
-        const ratio = r.carry_vol_1m;
-        const badge = ratio > 0.03 ? "badge-low" : ratio > 0.01 ? "badge-mid" : "badge-high";
-        const label = ratio > 0.03 ? "Attractive" : ratio > 0.01 ? "Neutral" : "Low Carry";
-        const pct = Math.min(100, Math.max(0, (ratio || 0) * 800)); // scale for bar
-
-        return `
-          <div class="card p-5">
-            <div class="flex justify-between items-start mb-3">
-              <div>
-                <div class="text-base font-semibold">${r.pair}</div>
-                <div class="text-xs text-zinc-500 mt-0.5">Spot ${r.spot != null ? r.spot.toFixed(4) : "—"}</div>
-              </div>
-              <span class="badge ${badge}">${label}</span>
-            </div>
-            
-            <div class="grid grid-cols-2 gap-3 text-sm mb-4">
-              <div>
-                <div class="text-zinc-500 text-xs">Yield Diff</div>
-                <div class="font-medium">${r.yield_diff_bp != null ? r.yield_diff_bp + " bp" : "—"}</div>
-              </div>
-              <div>
-                <div class="text-zinc-500 text-xs">1M Vol</div>
-                <div class="font-medium">${r.vol_1m != null ? (r.vol_1m * 100).toFixed(1) + "%" : "—"}</div>
-              </div>
-              <div>
-                <div class="text-zinc-500 text-xs">3M Vol</div>
-                <div class="font-medium">${r.vol_3m != null ? (r.vol_3m * 100).toFixed(1) + "%" : "—"}</div>
-              </div>
-              <div>
-                <div class="text-zinc-500 text-xs">Carry / Vol</div>
-                <div class="font-medium text-emerald-400">${ratio != null ? ratio.toFixed(3) : "—"}</div>
-              </div>
-            </div>
-            
-            <div class="progress-track">
-              <div class="progress-fill" style="width:${pct}%"></div>
-            </div>
-          </div>`;
-      }).join("");
-      document.getElementById("carry-full").innerHTML = html || "<p class='text-zinc-500'>No data</p>";
-    }
-
-    // ----- FX Vol Surfaces -----
-    function renderVolSurfaces() {
-      const surfaces = data.fx_vols?.surfaces || {};
-      const html = Object.entries(surfaces).map(([pair, s]) => {
-        const ts = s.term_structure || {};
-        const chg = s.change_1d || {};
-        
-        const tenors = [
-          { key: "ON",  label: "O/N" },
-          { key: "1W",  label: "1W" },
-          { key: "1M",  label: "1M" },
-          { key: "3M",  label: "3M" },
-          { key: "6M",  label: "6M" }
-        ];
-
-        return `
-          <div class="card p-5">
-            <div class="flex justify-between items-center mb-4">
-              <div>
-                <div class="text-base font-semibold">${pair}</div>
-                <div class="text-xs text-zinc-500">Spot ${s.spot != null ? s.spot.toFixed(4) : "—"} · ${s.as_of}</div>
-              </div>
-            </div>
-            
-            <div class="space-y-2.5">
-              ${tenors.map(t => {
-                const vol = ts[t.key];
-                const d = chg[t.key];
-                const cls = d > 0 ? "positive" : d < 0 ? "negative" : "text-zinc-500";
-                const barWidth = vol != null ? Math.min(100, vol * 800) : 0;
-                return `
-                  <div class="flex items-center gap-3">
-                    <div class="w-8 text-xs text-zinc-500">${t.label}</div>
-                    <div class="flex-1 progress-track">
-                      <div class="progress-fill" style="width:${barWidth}%"></div>
-                    </div>
-                    <div class="w-14 text-right text-sm font-medium">${vol != null ? (vol * 100).toFixed(1) + "%" : "—"}</div>
-                    <div class="w-12 text-right text-xs ${cls}">${d != null ? (d > 0 ? "+" : "") + (d * 100).toFixed(1) : ""}</div>
-                  </div>`;
-              }).join("")}
-            </div>
-          </div>`;
-      }).join("");
-      document.getElementById("vol-surfaces").innerHTML = html || "<p class='text-zinc-500'>No vol data</p>";
-    }
-
-    // ----- Gold -----
-    function renderGold() {
-      const g = data.gold;
-      if (!g) {
-        document.getElementById("gold-content").innerHTML = "<p class='text-zinc-500'>No gold data</p>";
-        return;
-      }
-
-      const ts = g.term_structure || {};
-      const chg = g.change_1d || {};
-
-      document.getElementById("gold-content").innerHTML = `
-        <div class="card p-6">
-          <div class="text-sm text-zinc-500 mb-1">Gold Spot</div>
-          <div class="text-3xl font-bold text-amber-400 mb-4">${g.price != null ? g.price.toFixed(2) : "—"}</div>
-          <div class="text-xs text-zinc-500">as of ${g.as_of}</div>
+    // ---------- SENTIMENT ----------
+    function renderSentiment() {
+      const s = data.risk_sentiment || {};
+      document.getElementById("sentiment-metrics").innerHTML = `
+        <div class="card p-5 text-center">
+          <div class="text-xs text-zinc-500 mb-1">US 10Y</div>
+          <div class="text-2xl font-semibold">${s.us_10y ?? "—"}%</div>
         </div>
-        
-        <div class="card p-6">
-          <div class="text-sm font-medium mb-4">Implied Volatility Term Structure</div>
-          <div class="space-y-3">
-            ${["ON","1W","1M","3M","6M"].map(t => {
-              const vol = ts[t];
-              const d = chg[t];
-              const cls = d > 0 ? "positive" : d < 0 ? "negative" : "";
-              return `
-                <div class="flex justify-between items-center">
-                  <span class="text-zinc-400 w-10">${t}</span>
-                  <span class="font-medium">${vol != null ? (vol * 100).toFixed(1) + "%" : "—"}</span>
-                  <span class="text-xs ${cls} w-14 text-right">${d != null ? (d > 0 ? "+" : "") + (d * 100).toFixed(1) : ""}</span>
-                </div>`;
-            }).join("")}
-          </div>
+        <div class="card p-5 text-center">
+          <div class="text-xs text-zinc-500 mb-1">Germany 10Y</div>
+          <div class="text-2xl font-semibold">${s.germany_10y ?? "—"}%</div>
+        </div>
+        <div class="card p-5 text-center">
+          <div class="text-xs text-zinc-500 mb-1">Italy–Germany</div>
+          <div class="text-2xl font-semibold">${s.italy_germany_spread_bp ?? "—"} bp</div>
+        </div>
+        <div class="card p-5 text-center">
+          <div class="text-xs text-zinc-500 mb-1">Gold 1M Vol</div>
+          <div class="text-2xl font-semibold">${s.gold_1m_vol ? (s.gold_1m_vol*100).toFixed(1)+"%" : "—"}</div>
         </div>`;
+
+      document.getElementById("sentiment-notes").innerHTML = (s.notes || []).map(n => `<li>• ${n}</li>`).join("") +
+        `<li>• Current tone: <strong class="${s.risk_tone?.includes("Off")?"text-red-400":"text-emerald-400"}">${s.risk_tone}</strong></li>`;
     }
 
-    // ============================================================
-    // TAB SWITCHING
-    // ============================================================
+    // ---------- SIGNALS ----------
+    function renderSignals() {
+      const signals = data.carry?.signals || [];
+      document.getElementById("signals-grid").innerHTML = signals.map(sig => {
+        const flags = [];
+        if (sig.carry === "Attractive") flags.push('<span class="badge badge-attractive">Attractive Carry</span>');
+        if (sig.carry === "Avoid / Expensive") flags.push('<span class="badge badge-avoid">Avoid / Expensive</span>');
+        if (sig.vol_spike) flags.push('<span class="badge badge-spike">Vol Spike</span>');
+        if (sig.vol_crush) flags.push('<span class="badge badge-crush">3D Crush</span>');
+        if (sig.vol_expansion) flags.push('<span class="badge badge-expand">3D Expansion</span>');
+        if (sig.term_structure === "Steep") flags.push('<span class="badge badge-steep">Steep Curve</span>');
+        if (sig.term_structure === "Inverted") flags.push('<span class="badge badge-inverted">Inverted Curve</span>');
+
+        return `<div class="card p-5">
+          <div class="text-base font-semibold mb-3">${sig.pair}</div>
+          <div class="flex flex-wrap gap-1.5 mb-3">${flags.join("") || '<span class="text-zinc-500 text-sm">No strong flags</span>'}</div>
+          ${sig.note ? `<div class="text-xs text-zinc-400">${sig.note}</div>` : ""}
+        </div>`;
+      }).join("") || "<p class='text-zinc-500'>No signals</p>";
+    }
+
+    // Tab switching
     document.querySelectorAll(".tab-btn[data-tab]").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".tab-btn[data-tab]").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-
         document.querySelectorAll(".tab-content").forEach(c => c.classList.add("hidden"));
         document.getElementById("tab-" + btn.dataset.tab).classList.remove("hidden");
       });
     });
 
-    // Init
     loadData();
   </script>
 </body>
