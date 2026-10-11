@@ -248,71 +248,113 @@
       }).join("") || "<p class='text-zinc-500'>No data</p>";
     }
 
-    // ---------- VOL SURFACES ----------
-    function renderVolSurfaces() {
-      const surfaces = data.fx_vols?.surfaces || {};
-      const container = document.getElementById("vol-surfaces");
-      container.innerHTML = "";
+    // ---------- VOL SURFACES (FIXED) ----------
+function renderVolSurfaces() {
+  const surfaces = data.fx_vols?.surfaces || {};
+  const signalsMap = {};
+  (data.carry?.signals || []).forEach(s => signalsMap[s.pair] = s);
 
-      Object.entries(surfaces).forEach(([pair, s], idx) => {
-        const ts = s.term_structure || {};
-        const chg3 = s.change_3d || {};
-        const id = `chart-${pair}`;
+  const container = document.getElementById("vol-surfaces");
+  container.innerHTML = "";
 
-        const card = document.createElement("div");
-        card.className = "card p-5";
-        card.innerHTML = `
-          <div class="flex justify-between items-center mb-3">
+  Object.entries(surfaces).forEach(([pair, s]) => {
+    if (pair === "GOLD") return; // Gold has its own tab
+
+    const ts = s.term_structure || {};
+    const chg3 = s.change_3d || {};
+    const sig = signalsMap[pair] || {};
+    const id = `chart-${pair}`;
+
+    // Build signal badges
+    const badges = [];
+    if (sig.vol_spike)      badges.push('<span class="badge badge-spike">Vol Spike</span>');
+    if (sig.vol_crush)      badges.push('<span class="badge badge-crush">3D Crush</span>');
+    if (sig.vol_expansion)  badges.push('<span class="badge badge-expand">3D Expansion</span>');
+    if (sig.term_structure === "Steep")     badges.push('<span class="badge badge-steep">Steep</span>');
+    if (sig.term_structure === "Inverted")  badges.push('<span class="badge badge-inverted">Inverted</span>');
+    if (sig.term_structure === "Flat")      badges.push('<span class="badge badge-neutral">Flat</span>');
+
+    const card = document.createElement("div");
+    card.className = "card p-5";
+    card.innerHTML = `
+      <div class="flex justify-between items-start mb-3">
+        <div>
+          <div class="text-base font-semibold">${pair}</div>
+          <div class="text-xs text-zinc-500">Spot ${s.spot != null ? Number(s.spot).toFixed(4) : "—"} · ${s.as_of}</div>
+        </div>
+        <div class="flex flex-wrap gap-1.5 justify-end max-w-[55%]">
+          ${badges.join("") || '<span class="text-xs text-zinc-600">No strong signal</span>'}
+        </div>
+      </div>
+
+      <canvas id="${id}" height="170"></canvas>
+
+      <div class="grid grid-cols-5 gap-2 mt-4 text-center text-xs">
+        ${["ON","1W","1M","3M","6M"].map(t => {
+          const vol = ts[t];
+          const chg = chg3[t];
+          return `
             <div>
-              <div class="text-base font-semibold">${pair}</div>
-              <div class="text-xs text-zinc-500">Spot ${s.spot?.toFixed(4) ?? "—"} · ${s.as_of}</div>
-            </div>
-            <div class="flex gap-1">
-              ${chg3["1M"] < -0.008 ? '<span class="badge badge-crush">3D Crush</span>' : ''}
-              ${chg3["1M"] > 0.008 ? '<span class="badge badge-expand">3D Expansion</span>' : ''}
-            </div>
-          </div>
-          <canvas id="${id}" height="180"></canvas>
-          <div class="grid grid-cols-5 gap-2 mt-3 text-center text-xs">
-            ${["ON","1W","1M","3M","6M"].map(t => `
-              <div>
-                <div class="text-zinc-500">${t}</div>
-                <div class="font-medium">${ts[t] != null ? (ts[t]*100).toFixed(1) : "—"}</div>
-                <div class="${chg3[t]>0?"positive":chg3[t]<0?"negative":"text-zinc-600"}">
-                  ${chg3[t]!=null ? (chg3[t]>0?"+":"")+(chg3[t]*100).toFixed(1) : ""}
-                </div>
-              </div>`).join("")}
-          </div>`;
-        container.appendChild(card);
+              <div class="text-zinc-500 mb-0.5">${t === "ON" ? "O/N" : t}</div>
+              <div class="font-medium text-sm">${vol != null ? (vol * 100).toFixed(1) : "—"}</div>
+              <div class="text-[11px] ${chg > 0 ? "positive" : chg < 0 ? "negative" : "text-zinc-600"}">
+                ${chg != null ? (chg > 0 ? "+" : "") + (chg * 100).toFixed(1) : ""}
+              </div>
+            </div>`;
+        }).join("")}
+      </div>
+    `;
+    container.appendChild(card);
 
-        // Chart
-        const ctx = document.getElementById(id).getContext("2d");
-        if (chartInstances[id]) chartInstances[id].destroy();
-        chartInstances[id] = new Chart(ctx, {
-          type: "line",
-          data: {
-            labels: ["O/N", "1W", "1M", "3M", "6M"],
-            datasets: [{
-              data: [ts.ON, ts["1W"], ts["1M"], ts["3M"], ts["6M"]].map(v => v != null ? v*100 : null),
-              borderColor: "#f59e0b",
-              backgroundColor: "rgba(245,158,11,0.08)",
-              fill: true,
-              tension: 0.3,
-              pointRadius: 4,
-              pointBackgroundColor: "#f59e0b"
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: { legend: { display: false } },
-            scales: {
-              y: { grid: { color: "#27272a" }, ticks: { color: "#71717a", callback: v => v+"%" } },
-              x: { grid: { display: false }, ticks: { color: "#a1a1aa" } }
+        // Clean Chart.js
+    const ctx = document.getElementById(id).getContext("2d");
+    if (chartInstances[id]) chartInstances[id].destroy();
+
+    chartInstances[id] = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: ["O/N", "1W", "1M", "3M", "6M"],
+        datasets: [{
+          data: [ts.ON, ts["1W"], ts["1M"], ts["3M"], ts["6M"]].map(v => v != null ? +(v * 100).toFixed(2) : null),
+          borderColor: "#f59e0b",
+          backgroundColor: "rgba(245, 158, 11, 0.08)",
+          fill: true,
+          tension: 0.35,
+          pointRadius: 4,
+          pointBackgroundColor: "#f59e0b",
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => ctx.parsed.y != null ? ctx.parsed.y.toFixed(1) + "%" : ""
             }
           }
-        });
-      });
-    }
+        },
+        scales: {
+          y: {
+            grid: { color: "#27272a" },
+            ticks: {
+              color: "#71717a",
+              callback: function(value) {
+                return value.toFixed(1) + "%";   // ← clean 1 decimal place
+              }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: "#a1a1aa" }
+          }
+        }
+      }
+    });
+  });
+}
 
     // ---------- RATES ↔ FX ----------
     function renderLinkage() {
