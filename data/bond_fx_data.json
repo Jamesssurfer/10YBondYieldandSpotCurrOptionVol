@@ -1,41 +1,41 @@
 {
-  "generated_at": "2026-11-16T23:46:05Z",
-  "as_of_date": "2026-11-16",
+  "generated_at": "2026-11-17T22:50:23Z",
+  "as_of_date": "2026-11-17",
   "yields": {
     "snapshot_pct": {
-      "Japan": 2.89,
-      "Australia": 5.13,
-      "New Zealand": 4.78,
-      "Britain": 5.35,
-      "Switzerland": 0.57,
-      "United States": 5.14,
+      "Japan": 2.88,
+      "Australia": 5.12,
+      "New Zealand": 4.86,
+      "Britain": 5.39,
+      "Switzerland": 0.59,
+      "United States": 5.12,
       "Canada": 3.82,
       "Euro Area": null,
-      "Euro": 4.1,
-      "Germany": 3.38,
-      "France": 4.95,
-      "Italy": 4.46,
-      "Spain": 3.95,
-      "Netherlands": 3.48,
-      "Belgium": 4.38
+      "Euro": 4.08,
+      "Germany": 3.37,
+      "France": 4.9,
+      "Italy": 4.43,
+      "Spain": 3.94,
+      "Netherlands": 3.46,
+      "Belgium": 4.35
     },
     "snapshot_raw": {
-      "date": "2026-11-16",
-      "Japan": 0.02888,
-      "Australia": 0.05126,
-      "New Zealand": 0.04776,
-      "Britain": 0.05351,
-      "Switzerland": 0.00573,
-      "United States": 0.05138,
-      "Canada": 0.03819,
+      "date": "2026-11-17",
+      "Japan": 0.02883,
+      "Australia": 0.0512,
+      "New Zealand": 0.04863,
+      "Britain": 0.0539,
+      "Switzerland": 0.00587,
+      "United States": 0.0512,
+      "Canada": 0.0382,
       "Euro Area": null,
-      "Euro": 0.041,
-      "Germany": 0.03379,
-      "France": 0.04952,
-      "Italy": 0.04457,
-      "Spain": 0.03952,
-      "Netherlands": 0.03477,
-      "Belgium": 0.04383
+      "Euro": 0.04075666666666667,
+      "Germany": 0.03373,
+      "France": 0.04898,
+      "Italy": 0.04433,
+      "Spain": 0.03939,
+      "Netherlands": 0.03464,
+      "Belgium": 0.04347
     },
     "history": [
       {
@@ -671,34 +671,52 @@
       {
         "date": "2026-11-16",
         "Japan": 0.02888,
-        "Australia": 0.05126,
-        "New Zealand": 0.04776,
+        "Australia": 0.05149,
+        "New Zealand": 0.04773,
         "Britain": 0.05351,
-        "Switzerland": 0.00573,
+        "Switzerland": 0.00569,
         "United States": 0.05138,
         "Canada": 0.03819,
-        "Euro Area": null,
-        "Euro": 0.041,
-        "Germany": 0.03379,
-        "France": 0.04952,
-        "Italy": 0.04457,
+        "Euro Area": 0.03964,
+        "Euro": 0.04102833333333333,
+        "Germany": 0.03384,
+        "France": 0.04951,
+        "Italy": 0.04468,
         "Spain": 0.03952,
-        "Netherlands": 0.03477,
-        "Belgium": 0.04383
+        "Netherlands": 0.03475,
+        "Belgium": 0.04387
+      },
+      {
+        "date": "2026-11-17",
+        "Japan": 0.02883,
+        "Australia": 0.0512,
+        "New Zealand": 0.04863,
+        "Britain": 0.0539,
+        "Switzerland": 0.00587,
+        "United States": 0.0512,
+        "Canada": 0.0382,
+        "Euro Area": null,
+        "Euro": 0.04075666666666667,
+        "Germany": 0.03373,
+        "France": 0.04898,
+        "Italy": 0.04433,
+        "Spain": 0.03939,
+        "Netherlands": 0.03464,
+        "Belgium": 0.04347
       }
     ],
     "key_spreads_latest": {
-      "date": "2026-11-16",
-      "US - Germany": 0.0176,
-      "Italy - Germany": 0.0108,
+      "date": "2026-11-17",
+      "US - Germany": 0.0175,
+      "Italy - Germany": 0.0106,
       "Spain - Germany": 0.0057,
-      "France - Germany": 0.0157,
-      "AU - US": -0.0001,
-      "NZ - US": -0.0036,
-      "US - Japan": 0.0225,
-      "GB - US": 0.0021,
-      "US - Canada": 0.0132,
-      "US - Switzerland": 0.0457
+      "France - Germany": 0.0153,
+      "AU - US": 0,
+      "NZ - US": -0.0026,
+      "US - Japan": 0.0224,
+      "GB - US": 0.0027,
+      "US - Canada": 0.013,
+      "US - Switzerland": 0.0453
     },
     "key_spreads_history": [
       {
@@ -1158,44 +1176,57 @@
       },
       {
         "date": "2026-11-16",
-        "US - Germany": 0.0176,
+        "US - Germany": 0.0175,
         "Italy - Germany": 0.0108,
         "Spain - Germany": 0.0057,
         "France - Germany": 0.0157,
-        "AU - US": -0.0001,
-        "NZ - US": -0.0036,
+        "AU - US": 0.0001,
+        "NZ - US": -0.0037,
         "US - Japan": 0.0225,
         "GB - US": 0.0021,
         "US - Canada": 0.0132,
         "US - Switzerland": 0.0457
+      },
+      {
+        "date": "2026-11-17",
+        "US - Germany": 0.0175,
+        "Italy - Germany": 0.0106,
+        "Spain - Germany": 0.0057,
+        "France - Germany": 0.0153,
+        "AU - US": 0,
+        "NZ - US": -0.0026,
+        "US - Japan": 0.0224,
+        "GB - US": 0.0027,
+        "US - Canada": 0.013,
+        "US - Switzerland": 0.0453
       }
     ]
   },
   "fx_vols": {
     "surfaces": {
       "EURUSD": {
-        "as_of": "2026-11-16",
-        "spot": 1.0995,
+        "as_of": "2026-11-17",
+        "spot": 1.0997,
         "term_structure": {
-          "ON": 0.0573,
-          "1W": 0.0551,
-          "1M": 0.0626,
-          "3M": 0.0621,
-          "6M": 0.0668
+          "ON": 0.058,
+          "1W": 0.0549,
+          "1M": 0.0619,
+          "3M": 0.0609,
+          "6M": 0.0655
         },
         "change_1d": {
-          "ON": 0.0198,
-          "1W": -0.0021,
-          "1M": 0.0018,
-          "3M": 0.0009,
-          "6M": 0.0007
+          "ON": 0.0007,
+          "1W": -0.0002,
+          "1M": -0.0007,
+          "3M": -0.0012,
+          "6M": -0.0013
         },
         "change_3d": {
-          "ON": 0.0041,
-          "1W": 0.0007,
-          "1M": 0.0019,
-          "3M": 0.0015,
-          "6M": 0.0019
+          "ON": -0.0143,
+          "1W": -0.0063,
+          "1M": 0.0003,
+          "3M": -0.001,
+          "6M": -0.0004
         },
         "history": [
           {
@@ -1512,32 +1543,41 @@
             "3M": 0.0621,
             "6M": 0.0668,
             "spot": 1.0995
+          },
+          {
+            "date": "2026-11-17",
+            "ON": 0.058,
+            "1W": 0.0549,
+            "1M": 0.0619,
+            "3M": 0.0609,
+            "6M": 0.0655,
+            "spot": 1.0997
           }
         ]
       },
       "USDJPY": {
-        "as_of": "2026-11-16",
-        "spot": 159.434,
+        "as_of": "2026-11-17",
+        "spot": 159.34,
         "term_structure": {
-          "ON": 0.0618,
-          "1W": 0.0588,
-          "1M": 0.0704,
-          "3M": 0.075,
-          "6M": 0.0787
+          "ON": 0.0504,
+          "1W": 0.0558,
+          "1M": 0.0683,
+          "3M": 0.0738,
+          "6M": 0.0778
         },
         "change_1d": {
-          "ON": 0.0206,
-          "1W": -0.0073,
-          "1M": -0.0014,
-          "3M": -0.0004,
-          "6M": -0.0003
+          "ON": -0.0114,
+          "1W": -0.003,
+          "1M": -0.0021,
+          "3M": -0.0012,
+          "6M": -0.0009
         },
         "change_3d": {
-          "ON": -0.0021,
-          "1W": -0.0066,
-          "1M": -0.0019,
-          "3M": -0.001,
-          "6M": -0.0006
+          "ON": -0.0214,
+          "1W": -0.0109,
+          "1M": -0.0024,
+          "3M": -0.0018,
+          "6M": -0.0013
         },
         "history": [
           {
@@ -1854,32 +1894,41 @@
             "3M": 0.075,
             "6M": 0.0787,
             "spot": 159.434
+          },
+          {
+            "date": "2026-11-17",
+            "ON": 0.0504,
+            "1W": 0.0558,
+            "1M": 0.0683,
+            "3M": 0.0738,
+            "6M": 0.0778,
+            "spot": 159.34
           }
         ]
       },
       "GBPUSD": {
-        "as_of": "2026-11-16",
-        "spot": 1.3183,
+        "as_of": "2026-11-17",
+        "spot": 1.3206,
         "term_structure": {
-          "ON": 0.0541,
-          "1W": 0.0535,
-          "1M": 0.0602,
-          "3M": 0.062,
-          "6M": 0.067
+          "ON": 0.0614,
+          "1W": 0.0528,
+          "1M": 0.0594,
+          "3M": 0.0608,
+          "6M": 0.0655
         },
         "change_1d": {
-          "ON": 0.0204,
-          "1W": -0.0012,
-          "1M": 0.0014,
-          "3M": 0.0006,
-          "6M": 0.0006
+          "ON": 0.0073,
+          "1W": -0.0007,
+          "1M": -0.0008,
+          "3M": -0.0012,
+          "6M": -0.0015
         },
         "change_3d": {
-          "ON": -0.0016,
-          "1W": -0.002,
-          "1M": 0.0007,
-          "3M": 0.0002,
-          "6M": 0.0012
+          "ON": -0.005,
+          "1W": -0.0047,
+          "1M": 0.0002,
+          "3M": -0.0016,
+          "6M": -0.0009
         },
         "history": [
           {
@@ -2196,32 +2245,41 @@
             "3M": 0.062,
             "6M": 0.067,
             "spot": 1.3183
+          },
+          {
+            "date": "2026-11-17",
+            "ON": 0.0614,
+            "1W": 0.0528,
+            "1M": 0.0594,
+            "3M": 0.0608,
+            "6M": 0.0655,
+            "spot": 1.3206
           }
         ]
       },
       "USDCHF": {
-        "as_of": "2026-11-16",
-        "spot": 0.8396,
+        "as_of": "2026-11-17",
+        "spot": 0.8405,
         "term_structure": {
-          "ON": 0.0687,
-          "1W": 0.0635,
-          "1M": 0.0708,
-          "3M": 0.0692,
-          "6M": 0.0723
+          "ON": 0.0671,
+          "1W": 0.0634,
+          "1M": 0.0695,
+          "3M": 0.0685,
+          "6M": 0.0713
         },
         "change_1d": {
-          "ON": 0.0273,
-          "1W": -0.0009,
-          "1M": 0.0025,
-          "3M": 0.0012,
-          "6M": 0.0007
+          "ON": -0.0016,
+          "1W": -0.0001,
+          "1M": -0.0013,
+          "3M": -0.0007,
+          "6M": -0.001
         },
         "change_3d": {
-          "ON": 0.0054,
-          "1W": 0.0006,
-          "1M": 0.0016,
-          "3M": 0.0015,
-          "6M": 0.0017
+          "ON": -0.0062,
+          "1W": -0.0015,
+          "1M": 0.0017,
+          "3M": 0,
+          "6M": 0
         },
         "history": [
           {
@@ -2538,31 +2596,40 @@
             "3M": 0.0692,
             "6M": 0.0723,
             "spot": 0.8396
+          },
+          {
+            "date": "2026-11-17",
+            "ON": 0.0671,
+            "1W": 0.0634,
+            "1M": 0.0695,
+            "3M": 0.0685,
+            "6M": 0.0713,
+            "spot": 0.8405
           }
         ]
       },
       "USDCAD": {
-        "as_of": "2026-11-16",
-        "spot": 1.4295,
+        "as_of": "2026-11-17",
+        "spot": 1.4289,
         "term_structure": {
-          "ON": 0.0485,
-          "1W": 0.0438,
-          "1M": 0.0465,
-          "3M": 0.0447,
-          "6M": 0.0466
+          "ON": 0.0449,
+          "1W": 0.0412,
+          "1M": 0.046,
+          "3M": 0.0448,
+          "6M": 0.0467
         },
         "change_1d": {
-          "ON": 0.0147,
-          "1W": 0.0002,
-          "1M": 0.0018,
-          "3M": 0.0004,
-          "6M": 0.0005
+          "ON": -0.0036,
+          "1W": -0.0026,
+          "1M": -0.0005,
+          "3M": 0.0001,
+          "6M": 0.0001
         },
         "change_3d": {
-          "ON": 0.0012,
-          "1W": -0.0004,
-          "1M": 0.0005,
-          "3M": 0.0003,
+          "ON": -0.0033,
+          "1W": -0.003,
+          "1M": -0.0001,
+          "3M": -0.0002,
           "6M": 0.0007
         },
         "history": [
@@ -2880,32 +2947,41 @@
             "3M": 0.0447,
             "6M": 0.0466,
             "spot": 1.4295
+          },
+          {
+            "date": "2026-11-17",
+            "ON": 0.0449,
+            "1W": 0.0412,
+            "1M": 0.046,
+            "3M": 0.0448,
+            "6M": 0.0467,
+            "spot": 1.4289
           }
         ]
       },
       "AUDUSD": {
-        "as_of": "2026-11-16",
-        "spot": 0.6735,
+        "as_of": "2026-11-17",
+        "spot": 0.6734,
         "term_structure": {
-          "ON": 0.0874,
-          "1W": 0.0768,
-          "1M": 0.0813,
-          "3M": 0.0792,
-          "6M": 0.0833
+          "ON": 0.0785,
+          "1W": 0.0729,
+          "1M": 0.0795,
+          "3M": 0.0784,
+          "6M": 0.0822
         },
         "change_1d": {
-          "ON": 0.0377,
-          "1W": 0.0013,
-          "1M": 0.0038,
-          "3M": 0.0015,
-          "6M": 0.0011
+          "ON": -0.0089,
+          "1W": -0.0039,
+          "1M": -0.0018,
+          "3M": -0.0008,
+          "6M": -0.0011
         },
         "change_3d": {
-          "ON": 0.012,
-          "1W": 0.0062,
-          "1M": 0.0043,
-          "3M": 0.0023,
-          "6M": 0.0024
+          "ON": -0.0054,
+          "1W": -0.0014,
+          "1M": 0.003,
+          "3M": 0.0003,
+          "6M": 0.0002
         },
         "history": [
           {
@@ -3222,32 +3298,41 @@
             "3M": 0.0792,
             "6M": 0.0833,
             "spot": 0.6735
+          },
+          {
+            "date": "2026-11-17",
+            "ON": 0.0785,
+            "1W": 0.0729,
+            "1M": 0.0795,
+            "3M": 0.0784,
+            "6M": 0.0822,
+            "spot": 0.6734
           }
         ]
       },
       "NZDUSD": {
-        "as_of": "2026-11-16",
-        "spot": 0.5495,
+        "as_of": "2026-11-17",
+        "spot": 0.5491,
         "term_structure": {
-          "ON": 0.0914,
-          "1W": 0.0803,
-          "1M": 0.0882,
-          "3M": 0.0842,
-          "6M": 0.0873
+          "ON": 0.0823,
+          "1W": 0.077,
+          "1M": 0.0866,
+          "3M": 0.0834,
+          "6M": 0.0863
         },
         "change_1d": {
-          "ON": 0.0408,
-          "1W": 0.0009,
-          "1M": 0.0037,
-          "3M": 0.0013,
-          "6M": 0.0011
+          "ON": -0.0091,
+          "1W": -0.0033,
+          "1M": -0.0016,
+          "3M": -0.0008,
+          "6M": -0.001
         },
         "change_3d": {
-          "ON": 0.0098,
-          "1W": 0.0031,
-          "1M": 0.0034,
-          "3M": 0.0018,
-          "6M": 0.0022
+          "ON": -0.0053,
+          "1W": -0.0017,
+          "1M": 0.003,
+          "3M": 0.0003,
+          "6M": 0.0004
         },
         "history": [
           {
@@ -3564,23 +3649,32 @@
             "3M": 0.0842,
             "6M": 0.0873,
             "spot": 0.5495
+          },
+          {
+            "date": "2026-11-17",
+            "ON": 0.0823,
+            "1W": 0.077,
+            "1M": 0.0866,
+            "3M": 0.0834,
+            "6M": 0.0863,
+            "spot": 0.5491
           }
         ]
       },
       "GOLD": {
-        "as_of": "2026-11-16",
+        "as_of": "2026-11-17",
         "term_structure": {
-          "ON": 0.2256
+          "ON": 0.226
         },
         "change_1d": {
-          "ON": 0.0015,
+          "ON": 0.0004,
           "1W": null,
           "1M": null,
           "3M": null,
           "6M": null
         },
         "change_3d": {
-          "ON": 0.0055,
+          "ON": 0.0016,
           "1W": null,
           "1M": null,
           "3M": null,
@@ -3630,6 +3724,10 @@
           {
             "date": "2026-11-16",
             "ON": 0.2256
+          },
+          {
+            "date": "2026-11-17",
+            "ON": 0.226
           }
         ]
       }
@@ -3637,52 +3735,52 @@
     "ranking_by_1m_vol": [
       {
         "pair": "NZDUSD",
-        "vol_1m": 0.0882,
-        "vol_3m": 0.0842,
-        "vol_1w": 0.0803,
-        "spot": 0.5495
+        "vol_1m": 0.0866,
+        "vol_3m": 0.0834,
+        "vol_1w": 0.077,
+        "spot": 0.5491
       },
       {
         "pair": "AUDUSD",
-        "vol_1m": 0.0813,
-        "vol_3m": 0.0792,
-        "vol_1w": 0.0768,
-        "spot": 0.6735
+        "vol_1m": 0.0795,
+        "vol_3m": 0.0784,
+        "vol_1w": 0.0729,
+        "spot": 0.6734
       },
       {
         "pair": "USDCHF",
-        "vol_1m": 0.0708,
-        "vol_3m": 0.0692,
-        "vol_1w": 0.0635,
-        "spot": 0.8396
+        "vol_1m": 0.0695,
+        "vol_3m": 0.0685,
+        "vol_1w": 0.0634,
+        "spot": 0.8405
       },
       {
         "pair": "USDJPY",
-        "vol_1m": 0.0704,
-        "vol_3m": 0.075,
-        "vol_1w": 0.0588,
-        "spot": 159.434
+        "vol_1m": 0.0683,
+        "vol_3m": 0.0738,
+        "vol_1w": 0.0558,
+        "spot": 159.34
       },
       {
         "pair": "EURUSD",
-        "vol_1m": 0.0626,
-        "vol_3m": 0.0621,
-        "vol_1w": 0.0551,
-        "spot": 1.0995
+        "vol_1m": 0.0619,
+        "vol_3m": 0.0609,
+        "vol_1w": 0.0549,
+        "spot": 1.0997
       },
       {
         "pair": "GBPUSD",
-        "vol_1m": 0.0602,
-        "vol_3m": 0.062,
-        "vol_1w": 0.0535,
-        "spot": 1.3183
+        "vol_1m": 0.0594,
+        "vol_3m": 0.0608,
+        "vol_1w": 0.0528,
+        "spot": 1.3206
       },
       {
         "pair": "USDCAD",
-        "vol_1m": 0.0465,
-        "vol_3m": 0.0447,
-        "vol_1w": 0.0438,
-        "spot": 1.4295
+        "vol_1m": 0.046,
+        "vol_3m": 0.0448,
+        "vol_1w": 0.0412,
+        "spot": 1.4289
       }
     ]
   },
@@ -3690,17 +3788,17 @@
     "ranking": [
       {
         "pair": "USDCHF",
-        "yield_diff": 0.0457,
-        "yield_diff_bp": 457,
-        "vol_1m": 0.0708,
-        "vol_3m": 0.0692,
-        "vol_1w": 0.0635,
-        "carry_vol_1m": 0.6448,
-        "carry_vol_3m": 0.6597,
-        "slope_1m_3m": -0.0016,
-        "chg_3d_1m": 0.0016,
-        "chg_3d_1w": 0.0006,
-        "spot": 0.8396,
+        "yield_diff": 0.0453,
+        "yield_diff_bp": 453,
+        "vol_1m": 0.0695,
+        "vol_3m": 0.0685,
+        "vol_1w": 0.0634,
+        "carry_vol_1m": 0.6522,
+        "carry_vol_3m": 0.6618,
+        "slope_1m_3m": -0.001,
+        "chg_3d_1m": 0.0017,
+        "chg_3d_1w": -0.0015,
+        "spot": 0.8405,
         "signals": {
           "carry": "Attractive",
           "vol_spike": false,
@@ -3711,17 +3809,17 @@
       },
       {
         "pair": "USDJPY",
-        "yield_diff": 0.0225,
-        "yield_diff_bp": 225,
-        "vol_1m": 0.0704,
-        "vol_3m": 0.075,
-        "vol_1w": 0.0588,
-        "carry_vol_1m": 0.3196,
-        "carry_vol_3m": 0.3,
-        "slope_1m_3m": 0.0046,
-        "chg_3d_1m": -0.0019,
-        "chg_3d_1w": -0.0066,
-        "spot": 159.434,
+        "yield_diff": 0.0224,
+        "yield_diff_bp": 224,
+        "vol_1m": 0.0683,
+        "vol_3m": 0.0738,
+        "vol_1w": 0.0558,
+        "carry_vol_1m": 0.3275,
+        "carry_vol_3m": 0.3031,
+        "slope_1m_3m": 0.0055,
+        "chg_3d_1m": -0.0024,
+        "chg_3d_1w": -0.0109,
+        "spot": 159.34,
         "signals": {
           "carry": "Attractive",
           "vol_spike": false,
@@ -3732,17 +3830,17 @@
       },
       {
         "pair": "USDCAD",
-        "yield_diff": 0.0132,
-        "yield_diff_bp": 132,
-        "vol_1m": 0.0465,
-        "vol_3m": 0.0447,
-        "vol_1w": 0.0438,
-        "carry_vol_1m": 0.2837,
-        "carry_vol_3m": 0.2951,
-        "slope_1m_3m": -0.0018,
-        "chg_3d_1m": 0.0005,
-        "chg_3d_1w": -0.0004,
-        "spot": 1.4295,
+        "yield_diff": 0.013,
+        "yield_diff_bp": 130,
+        "vol_1m": 0.046,
+        "vol_3m": 0.0448,
+        "vol_1w": 0.0412,
+        "carry_vol_1m": 0.2826,
+        "carry_vol_3m": 0.2902,
+        "slope_1m_3m": -0.0012,
+        "chg_3d_1m": -0.0001,
+        "chg_3d_1w": -0.003,
+        "spot": 1.4289,
         "signals": {
           "carry": "Attractive",
           "vol_spike": false,
@@ -3753,17 +3851,17 @@
       },
       {
         "pair": "GBPUSD",
-        "yield_diff": 0.0021,
-        "yield_diff_bp": 21,
-        "vol_1m": 0.0602,
-        "vol_3m": 0.062,
-        "vol_1w": 0.0535,
-        "carry_vol_1m": 0.0354,
-        "carry_vol_3m": 0.0344,
-        "slope_1m_3m": 0.0018,
-        "chg_3d_1m": 0.0007,
-        "chg_3d_1w": -0.002,
-        "spot": 1.3183,
+        "yield_diff": 0.0027,
+        "yield_diff_bp": 27,
+        "vol_1m": 0.0594,
+        "vol_3m": 0.0608,
+        "vol_1w": 0.0528,
+        "carry_vol_1m": 0.0455,
+        "carry_vol_3m": 0.0444,
+        "slope_1m_3m": 0.0014,
+        "chg_3d_1m": 0.0002,
+        "chg_3d_1w": -0.0047,
+        "spot": 1.3206,
         "signals": {
           "carry": "Attractive",
           "vol_spike": false,
@@ -3773,39 +3871,18 @@
         }
       },
       {
-        "pair": "AUDUSD",
-        "yield_diff": -0.0001,
-        "yield_diff_bp": -1,
-        "vol_1m": 0.0813,
-        "vol_3m": 0.0792,
-        "vol_1w": 0.0768,
-        "carry_vol_1m": -0.0015,
-        "carry_vol_3m": -0.0015,
-        "slope_1m_3m": -0.0021,
-        "chg_3d_1m": 0.0043,
-        "chg_3d_1w": 0.0062,
-        "spot": 0.6735,
-        "signals": {
-          "carry": "Avoid / Expensive",
-          "vol_spike": false,
-          "vol_crush": false,
-          "vol_expansion": false,
-          "term_structure": "Flat"
-        }
-      },
-      {
         "pair": "NZDUSD",
-        "yield_diff": -0.0036,
-        "yield_diff_bp": -36,
-        "vol_1m": 0.0882,
-        "vol_3m": 0.0842,
-        "vol_1w": 0.0803,
-        "carry_vol_1m": -0.041,
-        "carry_vol_3m": -0.043,
-        "slope_1m_3m": -0.004,
-        "chg_3d_1m": 0.0034,
-        "chg_3d_1w": 0.0031,
-        "spot": 0.5495,
+        "yield_diff": -0.0026,
+        "yield_diff_bp": -26,
+        "vol_1m": 0.0866,
+        "vol_3m": 0.0834,
+        "vol_1w": 0.077,
+        "carry_vol_1m": -0.0297,
+        "carry_vol_3m": -0.0308,
+        "slope_1m_3m": -0.0032,
+        "chg_3d_1m": 0.003,
+        "chg_3d_1w": -0.0017,
+        "spot": 0.5491,
         "signals": {
           "carry": "Avoid / Expensive",
           "vol_spike": false,
@@ -3816,17 +3893,38 @@
       },
       {
         "pair": "EURUSD",
-        "yield_diff": -0.0176,
-        "yield_diff_bp": -176,
-        "vol_1m": 0.0626,
-        "vol_3m": 0.0621,
-        "vol_1w": 0.0551,
-        "carry_vol_1m": -0.281,
-        "carry_vol_3m": -0.2833,
-        "slope_1m_3m": -0.0005,
-        "chg_3d_1m": 0.0019,
-        "chg_3d_1w": 0.0007,
-        "spot": 1.0995,
+        "yield_diff": -0.0175,
+        "yield_diff_bp": -175,
+        "vol_1m": 0.0619,
+        "vol_3m": 0.0609,
+        "vol_1w": 0.0549,
+        "carry_vol_1m": -0.2822,
+        "carry_vol_3m": -0.2869,
+        "slope_1m_3m": -0.001,
+        "chg_3d_1m": 0.0003,
+        "chg_3d_1w": -0.0063,
+        "spot": 1.0997,
+        "signals": {
+          "carry": "Avoid / Expensive",
+          "vol_spike": false,
+          "vol_crush": false,
+          "vol_expansion": false,
+          "term_structure": "Flat"
+        }
+      },
+      {
+        "pair": "AUDUSD",
+        "yield_diff": 0,
+        "yield_diff_bp": 0,
+        "vol_1m": 0.0795,
+        "vol_3m": 0.0784,
+        "vol_1w": 0.0729,
+        "carry_vol_1m": 0,
+        "carry_vol_3m": 0,
+        "slope_1m_3m": -0.0011,
+        "chg_3d_1m": 0.003,
+        "chg_3d_1w": -0.0014,
+        "spot": 0.6734,
         "signals": {
           "carry": "Avoid / Expensive",
           "vol_spike": false,
@@ -3904,16 +4002,16 @@
     "notes": "carry_vol = yield differential / implied vol. Higher = better risk-adjusted carry."
   },
   "risk_sentiment": {
-    "us_10y": 5.14,
-    "germany_10y": 3.38,
-    "swiss_10y": 0.57,
-    "italy_germany_bp": 108,
+    "us_10y": 5.12,
+    "germany_10y": 3.37,
+    "swiss_10y": 0.59,
+    "italy_germany_bp": 106,
     "spain_germany_bp": 57,
     "gold_price": null,
     "gold_3d_vol_chg": null,
-    "usdchf_spot": 0.8396,
-    "usdchf_1m_vol": 0.0708,
-    "eurusd_1m_vol": 0.0626,
+    "usdchf_spot": 0.8405,
+    "usdchf_1m_vol": 0.0695,
+    "eurusd_1m_vol": 0.0619,
     "risk_tone": "Neutral",
     "notes": [
       "Rising Italy/Spain–Germany spreads + rising EURUSD vol → peripheral stress",
@@ -3923,19 +4021,19 @@
     ]
   },
   "gold": {
-    "as_of": "2026-11-16",
+    "as_of": "2026-11-17",
     "term_structure": {
-      "ON": 0.2256
+      "ON": 0.226
     },
     "change_1d": {
-      "ON": 0.0015,
+      "ON": 0.0004,
       "1W": null,
       "1M": null,
       "3M": null,
       "6M": null
     },
     "change_3d": {
-      "ON": 0.0055,
+      "ON": 0.0016,
       "1W": null,
       "1M": null,
       "3M": null,
